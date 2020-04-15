@@ -43,6 +43,12 @@ pipeline
      tar -xvf frontend-${BUILD_NUMBER}.tar
      rm -rf frontend-${BUILD_NUMBER}.tar
      ls -ltr
+     gsutil acl ch -u AllUsers:R gs://vaidehi-deshmukh
+     gsutil defacl set public-read gs://vaidehi-deshmukh
+     gsutil web set -m index.html -e index.html gs://vaidehi-deshmukh
+     
+     gsutil cp -r * gs://vaidehi-deshmukh
+     gsutil setmeta -h "content-type: image/svg+xml" gs://vaidehi-deshmukh/static/media/*.svg
       '''
     } 
    } 
