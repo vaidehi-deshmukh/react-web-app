@@ -31,19 +31,22 @@ pipeline
         }
       }
     }
-   stage('deploy)
-         {
-          steps
-          {
-           sh '''
-           rm -rf deploy
-           mkdir deploy
-           cp -r frontend-${BUILD_NUMBER}.tar deploy/
-           cd deploy
-           tar -xvf frontend-${BUILD_NUMBER}.tar
-           ls -ltr
-           '''
-          }
-         }
-  }
-}
+   stage('Deploy')
+   {
+    steps
+    {
+     sh '''
+     rm -rf deploy
+     mkdir deploy
+     cp -r frontend-${BUILD_NUMBER}.tar deploy/
+     cd deploy
+     tar -xvf frontend-${BUILD_NUMBER}.tar
+     rm -rf frontend-${BUILD_NUMBER}.tar
+     ls -ltr
+      '''
+    } 
+   } 
+    
+  }  
+  
+}  
