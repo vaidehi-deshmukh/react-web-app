@@ -15,6 +15,7 @@ pipeline
       {
        script
         {
+         cleanWs()
          checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '${RepoBranch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/vaidehi-deshmukh/react-web-app.git']]]
         }
       }
